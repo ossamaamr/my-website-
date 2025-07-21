@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>رحلة زاد الآخرة | تسجيل الدخول / حجز الرحلات</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <div id="authPage" class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+        <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">مرحباً بك في رحلة زاد الآخرة</h2>
+            
+            <div id="loginForm" class="mb-8">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-4">تسجيل الدخول</h3>
+                <form onsubmit="handleLogin(event)">
+                    <div class="mb-4 text-right">
+                        <label for="loginEmail" class="block text-gray-700 text-sm font-bold mb-2">البريد الإلكتروني:</label>
+                        <input type="email" id="loginEmail" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="ادخل بريدك الإلكتروني" required>
+                    </div>
+                    <div class="mb-6 text-right">
+                        <label for="loginPassword" class="block text-gray-700 text-sm font-bold mb-2">كلمة المرور:</label>
+                        <input type="password" id="loginPassword" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="********" required>
+                    </div>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-300">
+                        تسجيل الدخول
+                    </button>
+                </form>
+                <p class="mt-4 text-gray-600">ليس لديك حساب؟ <a href="#" onclick="showRegisterForm()" class="text-blue-600 hover:underline">إنشاء حساب جديد</a></p>
+            </div>
+
+            <div id="registerForm" class="hidden">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-4">إنشاء حساب جديد</h3>
+                <form onsubmit="handleRegister(event)">
+                    <div class="mb-4 text-right">
+                        <label for="registerEmail" class="block text-gray-700 text-sm font-bold mb-2">البريد الإلكتروني:</label>
+                        <input type="email" id="registerEmail" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="ادخل بريدك الإلكتروني" required>
+                    </div>
+                    <div class="mb-4 text-right">
+                        <label for="registerPassword" class="block text-gray-700 text-sm font-bold mb-2">كلمة المرور:</label>
+                        <input type="password" id="registerPassword" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="********" required>
+                    </div>
+                    <div class="mb-6 text-right">
+                        <label for="confirmPassword" class="block text-gray-700 text-sm font-bold mb-2">تأكيد كلمة المرور:</label>
+                        <input type="password" id="confirmPassword" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="********" required>
+                    </div>
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-300">
+                        إنشاء حساب
+                    </button>
+                </form>
+                <p class="mt-4 text-gray-600">لديك حساب بالفعل؟ <a href="#" onclick="showLoginForm()" class="text-blue-600 hover:underline">تسجيل الدخول</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainContent">
+        <header class="bg-white shadow-sm">
+            <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-bus text-blue-600 text-2xl"></i>
+                    <h1 class="text-2xl font-bold text-gray-800">رحلة زاد الآخرة</h1> 
+                </div>
+                <div class="flex space-x-6 header-links">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">من نحن</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">سياسة الخصوصية</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">سجل كمزود خدمة</a>
+                    <a href="#" onclick="showLoginForm()" class="text-gray-600 hover:text-blue-600 transition-colors">سجل الدخول</a>
+                </div>
+            </nav>
+        </header>
+
+        <section class="hero-section relative h-96">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-4 animate-pulse">احجز رحلتك الآن</h2>
+                <img src="http://googleusercontent.com/file_content/0" alt="صورة باص ومكة" class="w-full max-w-lg rounded-lg shadow-lg mb-8" style="max-height: 250px; object-fit: cover;">
+                <p class="text-lg md:text-xl mb-8">رحلات مريحة وآمنة من المدينة المنورة إلى مكة المكرمة</p>
+                
+                <form id="searchForm" class="bg-white p-6 rounded-lg shadow-xl w-full max-w-3xl grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="flex flex-col">
+                        <label for="to" class="text-gray-700 text-sm font-semibold mb-1">من:</label>
+                        <select id="to" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800">
+                            <option value="المدينة المنورة">المدينة المنورة</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="from" class="text-gray-700 text-sm font-semibold mb-1">إلى:</label>
+                        <select id="from" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800">
+                            <option value="مكة المكرمة">مكة المكرمة</option>
+                        </select>
+                    </div>
+                    
+                    <div class="flex flex-col">
+                        <label for="date" class="text-gray-700 text-sm font-semibold mb-1">التاريخ:</label>
+                        <input type="date" id="date" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" required>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="time" class="text-gray-700 text-sm font-semibold mb-1">الوقت:</label>
+                        <input type="time" id="time" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" required>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="passengers" class="text-gray-700 text-sm font-semibold mb-1">عدد الركاب:</label>
+                        <input type="number" id="passengers" value="1" min="1" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800" required>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="tripType" class="text-gray-700 text-sm font-semibold mb-1">نوع الرحلة:</label>
+                        <select id="tripType" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800">
+                            <option value="باص">باص</option>
+                            <option value="سيارة خاصة">سيارة خاصة</option>
+                            <option value="VIP">VIP</option>
+                        </select>
+                    </div>
+                    
+                    <div class="md:col-span-3 flex justify-center mt-4">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 text-lg">
+                            ابحث عن الرحلات
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="container mx-auto px-4 py-12 text-center">
+            <h3 class="text-3xl font-bold text-gray-800 mb-8">لماذا تختار رحلة زاد الآخرة؟</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <i class="fas fa-check-circle text-blue-500 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">حجز مؤكد خلال دقائق</h4>
+                    <p class="text-gray-600">احجز رحلتك بكل سهولة وسرعة، مع تأكيد فوري لحجزك.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <i class="fas fa-shield-alt text-green-500 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">رحلات مريحة وآمنة</h4>
+                    <p class="text-gray-600">مركبات حديثة وسائقون محترفون لضمان راحتك وأمانك.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <i class="fas fa-clock text-purple-500 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">مواعيد دقيقة ومنضبطة</h4>
+                    <p class="text-gray-600">نلتزم بالمواعيد لضمان وصولك في الوقت المحدد.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <i class="fas fa-map-marker-alt text-red-500 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">تتبع مباشر للرحلة</h4>
+                    <p class="text-gray-600">تابع مسار رحلتك مباشرة على الخريطة.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mx-auto px-4 py-12">
+            <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">الرحلات المتاحة قريبًا</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">رحلة باص VIP</h4>
+                    <p class="text-gray-600 mb-1">الوجهة: مكة المكرمة</p>
+                    <p class="text-gray-600 mb-1">الساعة: 4:00 مساءً</p>
+                    <p class="text-gray-600 mb-4">المقاعد المتاحة: 15</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSchy0xu3P_0PBkgIHqviGJP2nRxzPaQ_0B3fbhKTxIF207HHA/viewform?usp=header" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full text-sm inline-block">احجز الآن</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">رحلة مع سائق خاص</h4>
+                    <p class="text-gray-600 mb-1">الوجهة: مكة المكرمة</p>
+                    <p class="text-gray-600 mb-1">الساعة: مرنة</p>
+                    <p class="text-gray-600 mb-4">المقاعد المتبقية: 3</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSchy0xu3P_0PBkgIHqviGJP2nRxzPaQ_0B3fbhKTxIF207HHA/viewform?usp=header" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full text-sm inline-block">احجز الآن</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2">رحلة خاصة بالنساء فقط</h4>
+                    <p class="text-gray-600 mb-1">الوجهة: مكة المكرمة</p>
+                    <p class="text-gray-600 mb-1">الساعة: 7:00 صباحًا</p>
+                    <p class="text-gray-600 mb-4">المقاعد المتاحة: 7</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSchy0xu3P_0PBkgIHqviGJP2nRxzPaQ_0B3fbhKTxIF207HHA/viewform?usp=header" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full text-sm inline-block">احجز الآن</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="container mx-auto px-4 text-center">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h5 class="text-lg font-bold mb-3">روابط سريعة</h5>
+                        <ul>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">من نحن</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">اتصل بنا</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">الأسئلة الشائعة</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-lg font-bold mb-3">الدعم والمساعدة</h5>
+                        <ul>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">سياسة الخصوصية</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">شروط الاستخدام</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">سجل كمزود خدمة</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-lg font-bold mb-3">تواصل معنا</h5>
+                        <div class="flex justify-center space-x-4 social-icons">
+                            <a href="https://www.youtube.com/shorts/re6ThrTTm4Y" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-whatsapp text-2xl"></i></a>
+                            <a href="https://t.me/Alsrojy" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-telegram text-2xl"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter text-2xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm mt-8">خدمتكم شرف، وسلامتكم غايتنا © <span id="currentYear"></span> رحلة زاد الآخرة. جميع الحقوق محفوظة.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
